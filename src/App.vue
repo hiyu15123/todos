@@ -3,8 +3,8 @@ import { ref } from 'vue'
 
 const todoText = ref('')
 const todos = ref([
-  { id: 1, completed: false, text: 'プログラミングを勉強する' },
-  { id: 2, completed: true, text: 'スーパーに買い物に行く' }
+  { id: 1, completed: false, text: 'プログラミングを勉強する', editing: false },
+  { id: 2, completed: true, text: 'スーパーに買い物に行く', editing: false },
 ])
 let number = 1
 
@@ -17,6 +17,7 @@ function addTodo() {
     id: number++,
     completed: false,
     text: todoText.value,
+    editing: false
   })
   todoText.value = ''
 }
@@ -24,12 +25,16 @@ function addTodo() {
 function removeTodo(id) {
   todos.value = todos.value.filter(todo => todo.id !== id)
 }
+
+function toggleEdit(todo) {
+  todo.editing = !todo.editing
+}
 </script>
 
 <template>
 <h1>Todoアプリ</h1>
 <div class="todo-form">
-  <input type="text" v-model="todoText" class="add-input" placeholder="Todoを入力してください">
+  <input type="text" @keyup.enter="addTodo" v-model="todoText" class="add-input" placeholder="Todoを入力してください">
   <button @click="addTodo" class="add-todo">追加する</button>
 </div>
 
@@ -40,14 +45,16 @@ function removeTodo(id) {
     <li v-for="todo in todos" :key="todo.id">
       <span class="todo-desc">
         <input type="checkbox" v-model="todo.completed">
-        <span :class="{ 'todo-completed': todo.completed }">{{ todo.text }}</span>
+        <span v-if="!todo.editing" :class="{ 'todo-completed': todo.completed }">{{ todo.text }}</span>
+        <input v-else type="text" v-model=todo.text @keyup.enter="todo.editing = false" class="edit-input">
       </span>
-      <button @click="removeTodo(todo.id)" class="todo-button">削除</button>
+      <span class="todo-actions">
+        <button @click="toggleEdit(todo)" class="todo-button -editing">{{ todo.editing ? '保存' : '編集' }}</button>
+        <button @click="removeTodo(todo.id)" class="todo-button -remove">削除</button>
+      </span>
     </li>
   </ul>
 </div>
-
-
 </template>
 
 <style scoped>
@@ -97,7 +104,19 @@ li {
 }
 .todo-desc {
   display: flex;
-  gap: 24px;
+  gap: 2.4rem;
+  width: 100%;
+}
+.edit-input {
+  font-size: 1.6rem;
+  line-height: 1.75;
+  letter-spacing: 0.04em;
+  padding: 0;
+  width: 100%;
+}
+.todo-actions {
+  display: flex;
+  gap: 8px;
 }
 .todo-button {
   background-color: #37e91c;
@@ -107,9 +126,18 @@ li {
   padding: 2px 8px;
   background-color: #e74c3c;
   transition: .2s;
+  width: max-content;
+
 }
 .todo-button:hover {
   background-color: #c0392b;
 }
+.todo-button.-editing {
+  background-color: #3498db;
+}
+.todo-button.-editing:hover {
+  background-color: #2980b9;
+}
+
 
 </style>
