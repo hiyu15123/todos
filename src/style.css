@@ -81,4 +81,9 @@ button:focus-visible {
 body {
   color: #333;
   letter-spacing: 0.04em;
+  line-height: 1.75;
+}
+
+h1,h2 {
+  line-height: 1.5;
 }

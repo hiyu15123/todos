@@ -59,11 +59,11 @@ button {
   margin-top: 60px;
 }
 .add-input {
-  padding: 10px 16px;
+  padding: 8px 16px;
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 4px 0 0 4px;
-  line-height: 1.5;
+  line-height: 1.75;
 }
 .add-todo {
   background-color: #f2f2f2;
@@ -72,9 +72,9 @@ button {
   border-left: none;
   width: 100px;
   min-width: 100px;
-  padding: 10px 16px;
+  padding: 8px 16px;
   position: relative;
-  line-height: 1.5;
+  line-height: 1.75;
 }
 
 .todo-completed {
@@ -86,7 +86,7 @@ ul {
 }
 li {
   border-bottom: 1px solid #ddd;
-  padding-bottom: 8px;
+  padding-block: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
