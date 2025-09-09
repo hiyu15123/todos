@@ -77,3 +77,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+body {
+  color: #333;
+  letter-spacing: 0.04em;
+}
