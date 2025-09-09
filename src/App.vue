@@ -2,7 +2,10 @@
 import { ref } from 'vue'
 
 const todoText = ref('')
-const todos = ref([])
+const todos = ref([
+  { id: 1, completed: false, text: 'プログラミングを勉強する' },
+  { id: 2, completed: true, text: 'スーパーに買い物に行く' }
+])
 let number = 1
 
 function addTodo() {
@@ -48,7 +51,7 @@ function removeTodo(id) {
 </template>
 
 <style scoped>
-button {
+button,input[type="checkbox"] {
   cursor: pointer;
 }
 .todo-form {
