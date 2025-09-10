@@ -1,6 +1,8 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import Draggable from 'vuedraggable'
+
+const STORAGE_KEY = 'todos-vue'
 
 const todoText = ref('')
 const todos = ref([
@@ -8,6 +10,17 @@ const todos = ref([
   { id: 2, completed: true, text: 'スーパーに買い物に行く', editing: false },
 ])
 let number = 3
+
+onMounted(() => {
+  const saved = localStorage.getItem(STORAGE_KEY)
+  if (saved) {
+    todos.value = JSON.parse(saved)
+  }
+})
+
+watch(todos, (newTodos) => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(newTodos))
+}, { deep: true})
 
 function addTodo() {
   if(!todoText.value) {
