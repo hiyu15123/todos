@@ -1,12 +1,13 @@
 <script setup>
 import { ref } from 'vue'
+import Draggable from 'vuedraggable'
 
 const todoText = ref('')
 const todos = ref([
   { id: 1, completed: false, text: 'プログラミングを勉強する', editing: false },
   { id: 2, completed: true, text: 'スーパーに買い物に行く', editing: false },
 ])
-let number = 1
+let number = 3
 
 function addTodo() {
   if(!todoText.value) {
@@ -41,19 +42,22 @@ function toggleEdit(todo) {
 <div class="todo-list">
   <h2>Todo一覧</h2>
   <p v-if="todos.length === 0">まだTodoがありません。</p>
-  <ul v-else>
-    <li v-for="todo in todos" :key="todo.id">
-      <span class="todo-desc">
-        <input type="checkbox" v-model="todo.completed">
-        <span v-if="!todo.editing" :class="{ 'todo-completed': todo.completed }">{{ todo.text }}</span>
-        <input v-else type="text" v-model=todo.text @keyup.enter="todo.editing = false" class="edit-input">
-      </span>
-      <span class="todo-actions">
-        <button @click="toggleEdit(todo)" class="todo-button -editing">{{ todo.editing ? '保存' : '編集' }}</button>
-        <button @click="removeTodo(todo.id)" class="todo-button -remove">削除</button>
-      </span>
-    </li>
-  </ul>
+  <Draggable v-model="todos" item-key="id" tag="ul" handle=".todo-handle" v-else>
+    <template #item="{ element: todo }">
+      <li>
+        <span class="todo-handle">≡</span>
+        <span class="todo-desc">
+          <input type="checkbox" v-model="todo.completed">
+          <span v-if="!todo.editing" :class="{ 'todo-completed': todo.completed }">{{ todo.text }}</span>
+          <input v-else type="text" v-model=todo.text @keyup.enter="todo.editing = false" class="edit-input">
+        </span>
+        <span class="todo-actions">
+          <button @click="toggleEdit(todo)" class="todo-button -editing">{{ todo.editing ? '保存' : '編集' }}</button>
+          <button @click="removeTodo(todo.id)" class="todo-button -remove">削除</button>
+        </span>
+      </li>
+    </template>
+  </Draggable>
 </div>
 </template>
 
@@ -97,10 +101,17 @@ ul {
 li {
   border-bottom: 1px solid #ddd;
   padding-block: 8px;
+  padding-left: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 1.6rem;
+}
+.todo-handle {
+  cursor: grab;
+}
+.todo-handle:active {
+  cursor: grabbing;
 }
 .todo-desc {
   display: flex;
