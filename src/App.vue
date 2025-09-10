@@ -45,9 +45,11 @@ function toggleEdit(todo) {
   <Draggable v-model="todos" item-key="id" tag="ul" handle=".todo-handle" v-else>
     <template #item="{ element: todo }">
       <li>
-        <span class="todo-handle">≡</span>
         <span class="todo-desc">
-          <input type="checkbox" v-model="todo.completed">
+          <span class="todo-icon">
+            <span class="todo-handle">≡</span>
+            <input type="checkbox" v-model="todo.completed">
+          </span>
           <span v-if="!todo.editing" :class="{ 'todo-completed': todo.completed }">{{ todo.text }}</span>
           <input v-else type="text" v-model=todo.text @keyup.enter="todo.editing = false" class="edit-input">
         </span>
@@ -100,12 +102,18 @@ ul {
 }
 li {
   border-bottom: 1px solid #ddd;
-  padding-block: 8px;
-  padding-left: 8px;
+  padding: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.6rem;
+  gap: 2rem;
+}
+@media (max-width:767px) {
+  li {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+  }
 }
 .todo-handle {
   cursor: grab;
@@ -113,8 +121,14 @@ li {
 .todo-handle:active {
   cursor: grabbing;
 }
-.todo-desc {
+.todo-icon {
   display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+.todo-desc{
+  display: flex;
+  align-items: center;
   gap: 2.4rem;
   width: 100%;
 }
@@ -138,7 +152,6 @@ li {
   background-color: #e74c3c;
   transition: .2s;
   width: max-content;
-
 }
 .todo-button:hover {
   background-color: #c0392b;
