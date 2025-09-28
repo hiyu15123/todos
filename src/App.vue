@@ -46,7 +46,7 @@ function toggleEdit(todo) {
 </script>
 
 <template>
-<h1>Todoアプリ</h1>
+<h1>Todos</h1>
 <div class="todo-form">
   <input type="text" @keyup.enter="addTodo" v-model="todoText" class="add-input" placeholder="Todoを入力してください">
   <button @click="addTodo" class="add-todo">追加する</button>
@@ -105,7 +105,6 @@ button,input[type="checkbox"] {
   position: relative;
   line-height: 1.75;
 }
-
 .todo-completed {
   text-decoration: line-through;
 }
@@ -175,6 +174,4 @@ li {
 .todo-button.-editing:hover {
   background-color: #2980b9;
 }
-
-
 </style>
