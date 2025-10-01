@@ -82,13 +82,16 @@ function toggleEdit(todo) {
 button,input[type="checkbox"] {
   cursor: pointer;
 }
+
 .todo-form {
   display: flex;
   align-items: center;
 }
+
 .todo-form + .todo-list {
   margin-top: 60px;
 }
+
 .add-input {
   padding: 8px 16px;
   width: 100%;
@@ -96,6 +99,7 @@ button,input[type="checkbox"] {
   border-radius: 4px 0 0 4px;
   line-height: 1.75;
 }
+
 .add-todo {
   background-color: #f2f2f2;
   border: 1px solid #ddd;
@@ -107,13 +111,16 @@ button,input[type="checkbox"] {
   position: relative;
   line-height: 1.75;
 }
+
 .todo-completed {
   text-decoration: line-through;
 }
+
 ul {
   list-style: none;
   padding: 0;
 }
+
 li {
   border-bottom: 1px solid #ddd;
   padding: 0.8rem;
@@ -124,6 +131,7 @@ li {
   position: relative;
   padding-left: 6.4rem;
 }
+
 @media (max-width:767px) {
   li {
     flex-direction: column;
@@ -131,9 +139,10 @@ li {
     gap: 0.6rem;
   }
 }
+
 .todo-handle {
   cursor: grab;
-  width: 1.6rem;
+  width: 1.4rem;
   aspect-ratio: 1;
   position: relative;
 }
@@ -155,11 +164,11 @@ li {
   background-color: #333;
   position: absolute;
   left: 0;
-  top: -5px;
+  top: -4px;
 }
 
 .todo-bar::after {
-  top: 5px;
+  top: 4px;
 }
 
 .todo-checkbox {
@@ -170,6 +179,7 @@ li {
 .todo-handle:active {
   cursor: grabbing;
 }
+
 .todo-icon {
   display: flex;
   align-items: center;
@@ -186,6 +196,7 @@ li {
   gap: 2.4rem;
   width: 100%;
 }
+
 .edit-input {
   font-size: 1.6rem;
   line-height: 1.75;
@@ -193,10 +204,12 @@ li {
   padding: 0;
   width: 100%;
 }
+
 .todo-actions {
   display: flex;
   gap: 8px;
 }
+
 .todo-button {
   background-color: #37e91c;
   border: none;
@@ -217,9 +230,11 @@ li {
 .todo-button:hover {
   background-color: #c0392b;
 }
+
 .todo-button.-editing {
   background-color: #3498db;
 }
+
 .todo-button.-editing:hover {
   background-color: #2980b9;
 }
