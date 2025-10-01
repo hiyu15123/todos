@@ -197,7 +197,7 @@ li {
 
 @media (max-width:767px) {
   .todo-checkbox {
-    width: 2rem;
+    width: 1.8rem;
     aspect-ratio: 1;
   }
 }
