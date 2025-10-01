@@ -98,7 +98,7 @@ button,input[type="checkbox"] {
   border: 1px solid #ddd;
   border-radius: 4px 0 0 4px;
   line-height: 1.75;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .add-todo {
@@ -111,7 +111,7 @@ button,input[type="checkbox"] {
   padding: 8px 16px;
   position: relative;
   line-height: 1.75;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .todo-completed {
@@ -247,6 +247,7 @@ li {
   background-color: #e74c3c;
   transition: .2s;
   width: max-content;
+  font-size: 1.4rem;
 }
 
 @media (max-width:767px) {
