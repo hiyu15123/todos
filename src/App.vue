@@ -137,6 +137,7 @@ li {
     flex-direction: column;
     align-items: flex-end;
     gap: 0.6rem;
+    padding-left: 7.2rem;
   }
 }
 
@@ -145,6 +146,12 @@ li {
   width: 1.4rem;
   aspect-ratio: 1;
   position: relative;
+}
+
+@media (max-width:767px) {
+  .todo-handle {
+    width: 2rem;
+  }
 }
 
 .todo-bar {
@@ -167,13 +174,32 @@ li {
   top: -4px;
 }
 
+@media (max-width:767px) {
+  .todo-bar::before, .todo-bar::after {
+    top: -5px;
+  }
+}
+
 .todo-bar::after {
   top: 4px;
+}
+
+@media (max-width:767px) {
+  .todo-bar::after {
+    top: 5px;
+  }
 }
 
 .todo-checkbox {
   width: 1.5rem;
   aspect-ratio: 1;
+}
+
+@media (max-width:767px) {
+  .todo-checkbox {
+    width: 2rem;
+    aspect-ratio: 1;
+  }
 }
 
 .todo-handle:active {
