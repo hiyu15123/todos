@@ -98,6 +98,7 @@ button,input[type="checkbox"] {
   border: 1px solid #ddd;
   border-radius: 4px 0 0 4px;
   line-height: 1.75;
+  font-size: 1.6rem;
 }
 
 .add-todo {
@@ -110,6 +111,7 @@ button,input[type="checkbox"] {
   padding: 8px 16px;
   position: relative;
   line-height: 1.75;
+  font-size: 1.6rem;
 }
 
 .todo-completed {
