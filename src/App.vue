@@ -175,8 +175,8 @@ li {
 }
 
 @media (max-width:767px) {
-  .todo-bar::before, .todo-bar::after {
-    top: -4px;
+  .todo-bar::before {
+    top: -5px;
   }
 }
 
@@ -186,7 +186,7 @@ li {
 
 @media (max-width:767px) {
   .todo-bar::after {
-    top: 4px;
+    top: 5px;
   }
 }
 
