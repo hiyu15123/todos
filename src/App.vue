@@ -60,8 +60,10 @@ function toggleEdit(todo) {
       <li>
         <span class="todo-desc">
           <span class="todo-icon">
-            <span class="todo-handle">≡</span>
-            <input type="checkbox" v-model="todo.completed">
+            <span class="todo-handle">
+              <span class="todo-bar"></span>
+            </span>
+            <input type="checkbox" v-model="todo.completed" class="todo-checkbox">
           </span>
           <span v-if="!todo.editing" :class="{ 'todo-completed': todo.completed }">{{ todo.text }}</span>
           <input v-else type="text" v-model=todo.text @keyup.enter="todo.editing = false" class="edit-input">
@@ -119,25 +121,65 @@ li {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+  position: relative;
+  padding-left: 6.4rem;
 }
 @media (max-width:767px) {
   li {
     flex-direction: column;
     align-items: flex-end;
-    gap: 0.4rem;
+    gap: 0.6rem;
   }
 }
 .todo-handle {
   cursor: grab;
+  width: 1.6rem;
+  aspect-ratio: 1;
+  position: relative;
 }
+
+.todo-bar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #333;
+}
+
+.todo-bar::before, .todo-bar::after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: #333;
+  position: absolute;
+  left: 0;
+  top: -5px;
+}
+
+.todo-bar::after {
+  top: 5px;
+}
+
+.todo-checkbox {
+  width: 1.5rem;
+  aspect-ratio: 1;
+}
+
 .todo-handle:active {
   cursor: grabbing;
 }
 .todo-icon {
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 1rem;
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
+
 .todo-desc{
   display: flex;
   align-items: center;
@@ -165,6 +207,12 @@ li {
   transition: .2s;
   width: max-content;
 }
+@media (max-width:767px) {
+  .todo-button {
+    font-size: 1.6rem;
+  }
+}
+
 .todo-button:hover {
   background-color: #c0392b;
 }
