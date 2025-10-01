@@ -150,7 +150,7 @@ li {
 
 @media (max-width:767px) {
   .todo-handle {
-    width: 2rem;
+    width: 1.8rem;
   }
 }
 
@@ -176,7 +176,7 @@ li {
 
 @media (max-width:767px) {
   .todo-bar::before, .todo-bar::after {
-    top: -5px;
+    top: -4px;
   }
 }
 
@@ -186,7 +186,7 @@ li {
 
 @media (max-width:767px) {
   .todo-bar::after {
-    top: 5px;
+    top: 4px;
   }
 }
 
@@ -197,7 +197,7 @@ li {
 
 @media (max-width:767px) {
   .todo-checkbox {
-    width: 1.8rem;
+    width: 2rem;
     aspect-ratio: 1;
   }
 }
