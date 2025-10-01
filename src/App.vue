@@ -207,6 +207,7 @@ li {
   transition: .2s;
   width: max-content;
 }
+
 @media (max-width:767px) {
   .todo-button {
     font-size: 1.6rem;
